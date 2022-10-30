@@ -1,0 +1,169 @@
+@font-face {
+	font-family: "Open_sans";
+	src: url(./fonts/OpenSans.ttf);
+}
+
+:root {
+	--main_bg_color: #efeef4;
+	--container_bg_color: #ffffff;
+	--police_description_color: #7f82a1;
+	--police_normal_color: #333333;
+	--police_heading_color: #14151d;
+	--police_important_color: #c94241;
+	--button_valide_color: #6733d4;
+	--border_button_color: #efeef4;
+}
+
+h2 {
+	margin: 0;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 20px;
+	font-family: "Open_sans";
+	color: var(--police_heading_color);
+}
+
+h3 {
+	margin: 0;
+	font-size: 20px;
+	font-family: "Open_sans";
+	color: var(--police_normal_color);
+}
+
+.description {
+	font-size: 12px;
+	font-family: "Open_sans";
+	color: var(--police_description_color);
+}
+
+body {
+	font-family: "Open_sans";
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--main_bg_color);
+}
+
+#container {
+	height: 80%;
+	width: 60%;
+	border-radius: 16px;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--container_bg_color);
+	box-shadow: 0px 0px 37px -20px var(--police_description_color);
+}
+
+#header {
+	height: 4%;
+	display: flex;
+	padding: 20px;
+	border-bottom: 1px solid var(--border_button_color);
+}
+
+#header .title {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+#header .container_todo {
+	width: 26px;
+	height: 20px;
+	margin-left: 8px;
+	border-radius: 16px;
+	margin-left: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--main_bg_color);
+}
+
+#countTodo {
+	margin-left: 8px;
+}
+
+#content {
+	height: 100%;
+	padding: 20px;
+	overflow-y: scroll;
+}
+
+#content .row {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 16px 0 16px 0;
+	border-bottom: 1px solid var(--border_button_color);
+}
+
+.start {
+	padding-top: 0 !important;
+}
+
+.end {
+	padding-bottom: 0 !important;
+}
+
+#content .completed_container {
+	margin-right: 20px;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	border-radius: 50%;
+}
+
+#content .completed {
+	padding: 0;
+	margin: 0;
+	width: 16px;
+	height: 16px;
+	border: 1px solid #c9ccd5;
+	border-radius: 50%;
+}
+
+#content .completed:focus-visible {
+	outline: none;
+}
+
+#card {
+	margin-top: -4px;
+}
+
+#card .title {
+	font-size: 18px;
+}
+
+#card .description {
+	font-size: 12px;
+}
+
+#content .meta {
+	margin-top: 4px;
+	display: flex;
+	flex-direction: row;
+	font-size: 14px;
+	color: var(--police_important_color);
+}
+
+#content .meta svg {
+	font-size: 12px;
+	margin-right: 4px;
+}
+
+#content .meta div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#content .meta span {
+	font-size: 14px;
+}
+
+#content .meta .date {
+	margin-right: 8px;
+}
