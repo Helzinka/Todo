@@ -1,3 +1,4 @@
+/* config font & vars */
 @font-face {
 	font-family: "Open_sans";
 	src: url(./fonts/OpenSans.ttf);
@@ -12,8 +13,22 @@
 	--police_important_color: #c94241;
 	--button_valide_color: #6733d4;
 	--border_button_color: #efeef4;
+	--police_task_color: #c9ccd5;
+	--police_sub_task_color: #c4c4d1;
 }
 
+body {
+	font-family: "Open_sans";
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--main_bg_color);
+}
+
+/* Headiing style */
 h2 {
 	margin: 0;
 	font-weight: 600;
@@ -36,18 +51,10 @@ h3 {
 	color: var(--police_description_color);
 }
 
-body {
-	font-family: "Open_sans";
-	margin: 0;
-	padding: 0;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: var(--main_bg_color);
-}
+/* MAIN CONTAINER */
 
 #container {
+	position: relative;
 	height: 80%;
 	width: 60%;
 	border-radius: 16px;
@@ -57,23 +64,49 @@ body {
 	box-shadow: 0px 0px 37px -20px var(--police_description_color);
 }
 
+/* HEADER  */
+
 #header {
+	position: relative;
 	height: 4%;
 	display: flex;
 	padding: 20px;
 	border-bottom: 1px solid var(--border_button_color);
 }
 
-#header .title {
+#header .todo {
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
 }
+#header .completed {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+#header .add {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	color: var(--button_valide_color);
+	border: 1px solid var(--button_valide_color);
+}
 
-#header .container_todo {
+#header .todo {
+	margin-right: 16px;
+}
+
+#header .container {
 	width: 26px;
 	height: 20px;
-	margin-left: 8px;
 	border-radius: 16px;
 	margin-left: 8px;
 	display: flex;
@@ -82,9 +115,7 @@ body {
 	background-color: var(--main_bg_color);
 }
 
-#countTodo {
-	margin-left: 8px;
-}
+/* CONTENT */
 
 #content {
 	height: 100%;
@@ -129,11 +160,13 @@ body {
 	outline: none;
 }
 
+/* CARD */
+
 #card {
 	margin-top: -4px;
 }
 
-#card .title {
+#card div {
 	font-size: 18px;
 }
 
@@ -141,7 +174,7 @@ body {
 	font-size: 12px;
 }
 
-#content .meta {
+#card .meta {
 	margin-top: 4px;
 	display: flex;
 	flex-direction: row;
@@ -149,21 +182,94 @@ body {
 	color: var(--police_important_color);
 }
 
-#content .meta svg {
+#card .meta svg {
 	font-size: 12px;
 	margin-right: 4px;
 }
 
-#content .meta div {
+#card .meta div {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
 
-#content .meta span {
+#card .meta span {
 	font-size: 14px;
 }
 
-#content .meta .date {
+#card .meta .date {
 	margin-right: 8px;
+}
+
+/* MODAL */
+
+.add_modal {
+	position: absolute;
+	bottom: 50px;
+	width: 65%;
+	padding: 20px;
+	background-color: var(--container_bg_color);
+	box-shadow: 0px 0px 37px -20px var(--police_description_color);
+	border-radius: 16px;
+}
+
+/* -- input */
+
+.task_container input:focus {
+	outline: none;
+}
+
+input:focus::placeholder {
+	color: transparent;
+}
+.task_container input {
+	padding: 0;
+	border: none;
+}
+.task_container .title input {
+	font-size: 16px;
+	font-weight: 100;
+	width: 100%;
+}
+.task_container .description input {
+	font-size: 12px;
+	font-weight: 100;
+	width: 100%;
+	height: 70px;
+}
+.task_container .description input::placeholder {
+	color: var(--police_sub_task_color);
+}
+.task_container .title input::placeholder {
+	color: var(--police_task_color);
+}
+
+/* --button  */
+
+.action_container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.action_container button {
+	padding: 0;
+	font-size: 14px;
+	min-width: 80px;
+	border-radius: 6px;
+	background-color: transparent;
+	border: 1px solid var(--border_button_color);
+	padding: 8px;
+	color: var(--police_description_color);
+}
+
+.action_container .add_btn {
+	background-color: var(--button_valide_color);
+	color: var(--container_bg_color) !important;
+}
+
+/* class js */
+
+.none {
+	display: none;
 }
