@@ -54,85 +54,43 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="completed_container">
-						<input type="checkbox" class="completed" />
-						<label for="checkbox"></label>
-					</div>
-					<div id="card">
-						<div class="title">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit.
-						</div>
-						<div class="description">
-							Lorem, ipsum dolor sit amet consectetur adipisicing
-							elit. Ullam fuga provident
-						</div>
-						<div class="meta">
-							<div class="date">
-								<i class="fa-regular fa-calendar"></i>
-								<span>6 avril</span>
-							</div>
-							<div class="autor">
-								<i class="fa-regular fa-user"></i>
-								<span>Franz lvq</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="completed_container">
-						<input type="checkbox" class="completed" />
-						<label for="checkbox"></label>
-					</div>
-					<div id="card">
-						<div class="title">
-							Lorem ipsum dolor sit amet consectetur adipisicing
-							elit.
-						</div>
-						<div class="description">
-							Lorem, ipsum dolor sit amet consectetur adipisicing
-							elit. Ullam fuga provident
-						</div>
-						<div class="meta">
-							<div class="date">
-								<i class="fa-regular fa-calendar"></i>
-								<span>6 avril</span>
-							</div>
-							<div class="autor">
-								<i class="fa-regular fa-user"></i>
-								<span>Franz lvq</span>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div class="add_modal none">
-			<div class="task_container">
-				<div class="title">
-					<input type="text" placeholder="Task name here ..." />
+			<form action="" id="contact_form">
+				<div class="task_container">
+					<div class="title">
+						<input
+							type="text"
+							name="task"
+							placeholder="Task name here ..."
+						/>
+					</div>
+					<div class="description">
+						<input
+							type="text"
+							name="desc"
+							placeholder="Description"
+						/>
+					</div>
 				</div>
-				<div class="description">
-					<input type="text" placeholder="Description" />
+				<div class="action_container">
+					<div class="info">
+						<button class="date">
+							<i class="fa-regular fa-calendar"></i>
+							<span>Due date</span>
+						</button>
+						<button class="autor">
+							<i class="fa-regular fa-user"></i>
+							<span>Assign to</span>
+						</button>
+					</div>
+					<div class="action">
+						<button class="cancel_btn">cancel</button>
+						<button class="add_btn" type="submit">add task</button>
+					</div>
 				</div>
-			</div>
-			<div class="action_container">
-				<div class="info">
-					<button class="date">
-						<i class="fa-regular fa-calendar"></i>
-						<span>Due date</span>
-					</button>
-					<button class="autor">
-						<i class="fa-regular fa-user"></i>
-						<span>Assign to</span>
-					</button>
-				</div>
-				<div class="action">
-					<button class="cancel_btn">cancel</button>
-					<button class="add_btn">add task</button>
-				</div>
-			</div>
+			</form>
 		</div>
 		<script
 			src="https://kit.fontawesome.com/af6fcc941f.js"
