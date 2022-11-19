@@ -9,4 +9,4 @@ Credit UI -> Prakash Ghodke : [link](https://dribbble.com/ghodkester)
 
 ---
 
-![Screenshot](./img/wip.png)
+![Screenshot](./public/img/wip.png)
