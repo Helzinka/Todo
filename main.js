@@ -1,5 +1,7 @@
+import db from "./utils/storage.js"
+import check from "./utils/checkValues.js"
+
 // '$' Alias for document.querySelector
-import db from "./storage.js"
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
@@ -7,13 +9,9 @@ const $$ = document.querySelectorAll.bind(document)
 
 const Add = $(".add")
 const Add_modal = $(".add_modal")
-const Add_btn = $(".add_btn")
 const Cancel_btn = $(".cancel_btn")
 const Content = $("#content")
-const Contents = $$("#content")
-const Rows = $$(".row")
 const Contact_form = $("#contact_form")
-const Count_todo = $("#count_todo")
 
 // Get nb todo from count_todo
 getNbtodo()
@@ -47,16 +45,23 @@ Contact_form.addEventListener("submit", (data) => {
 		// Get data in FormData and return a object
 		const myFormData = new FormData(data.target)
 		let data_form = Object.fromEntries(myFormData.entries())
-
+		console.log(data_form)
 		createRow(data_form)
 		getNbtodo()
 	}
 })
 
 // Create a row with data from form element
+
+// data = {
+// 	assign_to: "name",
+// 	desc: "desc",
+// 	due_date: "2022-11-19",
+// 	task: "title",
+// }
+
 function createRow(data) {
-	// check if title task > 3 characters
-	if (data.task.length > 2) {
+	if (data.task.length >= 0) {
 		let startClassName = document.querySelectorAll(".row").length < 1 ? "start" : ""
 		let template_todo = `
 			<div class="row ${startClassName}">
@@ -92,3 +97,12 @@ function createRow(data) {
 function getNbtodo() {
 	document.querySelector("#count_todo").textContent = document.querySelectorAll(".row").length
 }
+
+console.log(
+	check.sumbit({
+		assign_to: "name",
+		desc: "desc",
+		due_date: "2022-11-19",
+		task: "title",
+	})
+)

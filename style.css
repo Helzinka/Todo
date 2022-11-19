@@ -1,4 +1,6 @@
 /* config font & vars */
+@import url(./style/card.css);
+
 @font-face {
 	font-family: "Open_sans";
 	src: url(/fonts/OpenSans.ttf);
@@ -10,8 +12,8 @@
 	--police_description_color: #7f82a1;
 	--police_normal_color: #333333;
 	--police_heading_color: #14151d;
-	--police_important_color: #c94241;
-	--button_valide_color: #6733d4;
+	--important: #c94241;
+	--valid: #6733d4;
 	--border_button_color: #efeef4;
 	--police_task_color: #c9ccd5;
 	--police_sub_task_color: #c4c4d1;
@@ -61,7 +63,7 @@ h3 {
 	display: flex;
 	flex-direction: column;
 	background-color: var(--container_bg_color);
-	box-shadow: 0px 0px 37px -20px var(--police_description_color);
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 /* HEADER  */
@@ -96,8 +98,8 @@ h3 {
 	width: 26px;
 	height: 26px;
 	border-radius: 50%;
-	color: var(--button_valide_color);
-	border: 1px solid var(--button_valide_color);
+	color: var(--valid);
+	border: 1px solid var(--valid);
 }
 
 #header .todo {
@@ -119,20 +121,16 @@ h3 {
 
 #content {
 	height: 100%;
-	padding: 20px;
 	overflow-y: scroll;
 }
 
 #content .row {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
-	padding: 16px 0 16px 0;
+	padding: 16px;
 	border-bottom: 1px solid var(--border_button_color);
-}
-
-.start {
-	padding-top: 0 !important;
 }
 
 .end {
@@ -158,47 +156,6 @@ h3 {
 
 #content .completed:focus-visible {
 	outline: none;
-}
-
-/* CARD */
-
-#card {
-	margin-top: -4px;
-}
-
-#card div {
-	font-size: 18px;
-}
-
-#card .description {
-	font-size: 12px;
-}
-
-#card .meta {
-	margin-top: 4px;
-	display: flex;
-	flex-direction: row;
-	font-size: 14px;
-	color: var(--police_important_color);
-}
-
-#card .meta svg {
-	font-size: 12px;
-	margin-right: 4px;
-}
-
-#card .meta div {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-
-#card .meta span {
-	font-size: 14px;
-}
-
-#card .meta .date {
-	margin-right: 8px;
 }
 
 /* MODAL */
@@ -264,7 +221,7 @@ input:focus::placeholder {
 }
 
 .action_container .add_btn {
-	background-color: var(--button_valide_color);
+	background-color: var(--valid);
 	color: var(--container_bg_color) !important;
 }
 

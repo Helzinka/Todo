@@ -1,0 +1,65 @@
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 16px;
+	border-bottom: 1px solid var(--border_button_color);
+}
+
+.card:hover .fa-pen-to-square {
+	color: var(--valid);
+}
+.card:hover .fa-arrow-right-arrow-left {
+	color: var(--valid);
+}
+.card:hover .fa-trash-can {
+	color: var(--important);
+}
+
+.content {
+	margin-top: -4px;
+}
+
+.content .title {
+	font-size: 18px;
+}
+
+.content .description {
+	font-size: 12px;
+	margin: 8px 0px 8px 0px;
+}
+
+.content .meta {
+	display: flex;
+	flex-direction: row;
+	font-size: 14px;
+	gap: 8px;
+	color: var(--important);
+}
+
+.content .meta svg {
+	font-size: 12px;
+}
+
+.content .meta div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 4px;
+}
+
+.content .meta span {
+	font-size: 14px;
+}
+
+.crud {
+	min-width: 30px;
+	color: transparent;
+	font-size: 16px;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	transition: 0.2s;
+}

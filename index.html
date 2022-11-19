@@ -12,7 +12,7 @@
 		/>
 		<link
 			rel="stylesheet"
-			href="./style/style.css"
+			href="./style.css"
 		/>
 
 		<title>Todo app</title>
@@ -37,7 +37,7 @@
 				</div>
 			</div>
 			<div id="content">
-				<div class="row start">
+				<div class="card">
 					<div class="completed_container">
 						<input
 							type="checkbox"
@@ -45,7 +45,7 @@
 						/>
 						<label for="checkbox"></label>
 					</div>
-					<div id="card">
+					<div class="content">
 						<div class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
 						<div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam fuga provident</div>
 						<div class="meta">
@@ -59,28 +59,10 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="completed_container">
-						<input
-							type="checkbox"
-							class="completed"
-						/>
-						<label for="checkbox"></label>
-					</div>
-					<div id="card">
-						<div class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-						<div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam fuga provident</div>
-						<div class="meta">
-							<div class="date">
-								<i class="fa-regular fa-calendar"></i>
-								<span>6 avril</span>
-							</div>
-							<div class="autor">
-								<i class="fa-regular fa-user"></i>
-								<span>Franz lvq</span>
-							</div>
-						</div>
+					<div class="crud">
+						<i class="fa-regular fa-pen-to-square"></i>
+						<i class="fa-solid fa-arrow-right-arrow-left"></i>
+						<i class="fa-regular fa-trash-can"></i>
 					</div>
 				</div>
 			</div>
@@ -94,7 +76,7 @@
 					<div class="title">
 						<input
 							type="text"
-							name="task"
+							name="title"
 							placeholder="Task name here ..."
 						/>
 					</div>
@@ -109,10 +91,18 @@
 				<div class="action_container">
 					<div class="info">
 						<button class="date">
+							<input
+								type="date"
+								name="due_date"
+							/>
 							<i class="fa-regular fa-calendar"></i>
 							<span>Due date</span>
 						</button>
 						<button class="autor">
+							<input
+								type="text"
+								name="assign_to"
+							/>
 							<i class="fa-regular fa-user"></i>
 							<span>Assign to</span>
 						</button>
@@ -135,7 +125,7 @@
 		></script>
 		<script
 			type="module"
-			src="./script/main.js"
+			src="./main.js"
 		></script>
 	</body>
 </html>
