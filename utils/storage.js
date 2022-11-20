@@ -2,7 +2,7 @@ const storage = {
 	setLocalStorage: function setLocalStorage(key, data) {
 		// if key is not already use
 		if (!storage.getLocalStorage(key)) {
-			return localStorage.setItem(key, data)
+			return localStorage.setItem(key, JSON.stringify(data))
 		}
 	},
 	// remove data from key value
@@ -11,7 +11,7 @@ const storage = {
 	},
 	// get data from key value
 	getLocalStorage: function getLocalStorage(key) {
-		return localStorage.getItem(key)
+		return JSON.parse(localStorage.getItem(key))
 	},
 	// clear all the storage
 	clearLocalStorage: function clearLocalStorage() {
@@ -19,7 +19,16 @@ const storage = {
 	},
 	// get the length of the storage
 	getLengthLocalStorage: function getLengthLocalStorage() {
-		return localStorage.length
+		return localStorage.length > 0 ? localStorage.length : { error: "no data" }
+	},
+
+	getAllLocalStorage: function getAllLocalStorage() {
+		if (storage.getLengthLocalStorage() > 0) {
+			let data = Object.keys(localStorage).map((e) => storage.getLocalStorage(e))
+			return { result: data }
+		} else {
+			return { error: "no keys" }
+		}
 	},
 }
 

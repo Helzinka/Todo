@@ -13,8 +13,8 @@ const Cancel_btn = $(".cancel_btn")
 const Content = $("#content")
 const Contact_form = $("#contact_form")
 
-// Get nb todo from count_todo
-getNbtodo()
+// Get todo from db
+getAllCardsFromDB()
 
 // Display a task modal from add button
 let is_add_open = false
@@ -45,11 +45,24 @@ Contact_form.addEventListener("submit", (data) => {
 		// Get data in FormData and return a object
 		const myFormData = new FormData(data.target)
 		let data_form = Object.fromEntries(myFormData.entries())
-		console.log(data_form)
-		createRow(data_form)
+		createCardFromSubmit(data_form)
 		getNbtodo()
 	}
 })
+
+for (let i = 0; i < document.querySelectorAll(".delete").length; i++) {
+	document.querySelectorAll(".delete")[i].addEventListener("click", function (event) {
+		let key = document.querySelectorAll(".title")[i].textContent
+		db.storage.removeLocalStorage(key)
+	})
+}
+
+// for (const n of document.querySelectorAll(".delete")) {
+// 	n.addEventListener("click", (data) => {
+// 		console.log(data)
+// 		// db.storage.removeLocalStorage()
+// 	})
+// }
 
 // Create a row with data from form element
 
@@ -60,36 +73,96 @@ Contact_form.addEventListener("submit", (data) => {
 // 	task: "title",
 // }
 
-function createRow(data) {
-	if (data.task.length >= 0) {
-		let startClassName = document.querySelectorAll(".row").length < 1 ? "start" : ""
-		let template_todo = `
-			<div class="row ${startClassName}">
+function getAllCardsFromDB() {
+	if (db.storage.getAllLocalStorage().result) {
+		db.storage.getAllLocalStorage().result.map((e) => {
+			let template_card = `
+				<div class="card">
+					<div class="completed_container">
+						<input
+							type="checkbox"
+							class="completed"
+						/>
+						<label for="checkbox"></label>
+					</div>
+					<div class="content">
+						<div class="title">${e.title}</div>
+						<div class="description">${e.desc}</div>
+						<div class="meta">
+							<div class="date">
+								<i class="fa-regular fa-calendar"></i>
+								<span>${e.due_date}</span>
+							</div>
+							<div class="autor">
+								<i class="fa-regular fa-user"></i>
+								<span>${e.assign_to}</span>
+							</div>
+						</div>
+					</div>
+					<div class="crud">
+						<div class="edit"><i class="fa-regular fa-pen-to-square"></i></div>
+						<div class="move"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+						<div class="delete"><i class="fa-regular fa-trash-can"></i></div>
+					</div>
+				</div>
+				`
+			Content.innerHTML += template_card
+
+			for (let i = 0; i < document.querySelectorAll(".delete").length; i++) {
+				console.log("ok")
+				document.querySelectorAll(".delete")[i].addEventListener("click", function (event) {
+					let key = document.querySelectorAll(".title")[i].textContent
+					db.storage.removeLocalStorage(key)
+				})
+			}
+		})
+	}
+}
+
+function createCardFromSubmit(data) {
+	let response = check.sumbit(data)
+	if (response) {
+		db.storage.setLocalStorage(data.title, data)
+		let template_card = `
+			<div class="card">
 				<div class="completed_container">
-					<input type="checkbox" class="completed" />
+					<input
+						type="checkbox"
+						class="completed"
+					/>
 					<label for="checkbox"></label>
 				</div>
-				<div id="card">
-					<div class="title">
-						${data.task}
-					</div>
-					<div class="description">
-						${data.desc}
-					</div>
+				<div class="content">
+					<div class="title">${data.title}</div>
+					<div class="description">${data.desc}</div>
 					<div class="meta">
 						<div class="date">
 							<i class="fa-regular fa-calendar"></i>
-							<span>6 avril</span>
+							<span>${data.due_date}</span>
 						</div>
 						<div class="autor">
 							<i class="fa-regular fa-user"></i>
-							<span>Autor name</span>
+							<span>${data.assign_to}</span>
 						</div>
 					</div>
 				</div>
-			</div>`
-
-		Content.innerHTML += template_todo
+				<div class="crud">
+					<div class="edit"><i class="fa-regular fa-pen-to-square"></i></div>
+					<div class="move"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+					<div class="delete"><i class="fa-regular fa-trash-can"></i></div>
+				</div>
+			</div>
+			`
+		Content.innerHTML += template_card
+		for (let i = 0; i < document.querySelectorAll(".delete").length; i++) {
+			console.log("ok")
+			document.querySelectorAll(".delete")[i].addEventListener("click", function (event) {
+				let key = document.querySelectorAll(".title")[i].textContent
+				db.storage.removeLocalStorage(key)
+			})
+		}
+	} else {
+		return response
 	}
 }
 
@@ -97,12 +170,3 @@ function createRow(data) {
 function getNbtodo() {
 	document.querySelector("#count_todo").textContent = document.querySelectorAll(".row").length
 }
-
-console.log(
-	check.sumbit({
-		assign_to: "name",
-		desc: "desc",
-		due_date: "2022-11-19",
-		task: "title",
-	})
-)
