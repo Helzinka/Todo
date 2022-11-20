@@ -13,7 +13,7 @@ const checkValues = {
 				let d = date.getDate()
 				let m = date.getMonth()
 				let y = date.getFullYear().toString().slice(2)
-				data.due_date = `${d} / ${m} / ${y}`
+				data.due_date = `${d}/${m}/${y}`
 				return { result: "true", data: data }
 			}
 		} else {
