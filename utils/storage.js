@@ -1,35 +1,45 @@
-const storage = {
-	setLocalStorage: function setLocalStorage(key, data) {
-		// if key is not already use
-		if (!storage.getLocalStorage(key)) {
-			return localStorage.setItem(key, JSON.stringify(data))
+export const setLocalStorage = (key, data, update = false) => {
+	// if key is not already use and if data exist
+	if (!update && key) {
+		let { result } = getLocalStorage()
+		if (!result) {
+			localStorage.setItem(key, JSON.stringify(data))
+			return { result: true, data: `add ${key}` }
 		}
-	},
-	// remove data from key value
-	removeLocalStorage: function removeLocalStorage(key) {
-		return localStorage.removeItem(key)
-	},
-	// get data from key value
-	getLocalStorage: function getLocalStorage(key) {
-		return JSON.parse(localStorage.getItem(key))
-	},
-	// clear all the storage
-	clearLocalStorage: function clearLocalStorage() {
-		return localStorage.clear()
-	},
-	// get the length of the storage
-	getLengthLocalStorage: function getLengthLocalStorage() {
-		return localStorage.length > 0 ? localStorage.length : { error: "no data" }
-	},
-
-	getAllLocalStorage: function getAllLocalStorage() {
-		if (storage.getLengthLocalStorage() > 0) {
-			let data = Object.keys(localStorage).map((e) => storage.getLocalStorage(e))
-			return { result: data }
-		} else {
-			return { error: "no keys" }
-		}
-	},
+	} else if (update) {
+		localStorage.setItem(key, JSON.stringify(data))
+		return { result: true, data: `update ${key}` }
+	} else {
+		return { result: false, error: "missing date" }
+	}
+}
+// remove data from key value
+export const removeLocalStorage = (key) => {
+	return localStorage.removeItem(key)
+}
+// get data from key value
+export const getLocalStorage = (key) => {
+	return localStorage.getItem(key) != undefined
+		? { result: true, data: JSON.parse(localStorage.getItem(key)) }
+		: { result: false, error: "no data from key" }
+}
+// clear all the storage
+export const clearLocalStorage = () => {
+	return localStorage.clear()
+}
+// get the length of the storage
+export const getLengthLocalStorage = () => {
+	return localStorage.length > 0
+		? { result: true, data: localStorage.length }
+		: { result: false, error: "no data" }
 }
 
-export default { storage }
+export const getAllLocalStorage = () => {
+	let { result } = getLengthLocalStorage()
+	if (result) {
+		let data = Object.keys(localStorage).map((e) => getLocalStorage(e).data)
+		return { result: true, data: data }
+	} else {
+		return { result: false, error: "no keys" }
+	}
+}

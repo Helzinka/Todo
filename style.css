@@ -160,7 +160,7 @@ h3 {
 
 /* MODAL */
 
-.add_modal {
+#modal {
 	position: absolute;
 	bottom: 50px;
 	width: 65%;

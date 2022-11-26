@@ -46,8 +46,11 @@
 						<label for="checkbox"></label>
 					</div>
 					<div class="content">
-						<div class="title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-						<div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam fuga provident</div>
+						<div class="title">Lorem</div>
+						<div class="description">
+							Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+							Ullam fuga provident
+						</div>
 						<div class="meta">
 							<div class="date">
 								<i class="fa-regular fa-calendar"></i>
@@ -60,42 +63,21 @@
 						</div>
 					</div>
 					<div class="crud">
-						<div class="edit"><i class="fa-regular fa-pen-to-square"></i></div>
-						<div class="move"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
-						<div class="delete"><i class="fa-regular fa-trash-can"></i></div>
-					</div>
-				</div>
-				<div class="card">
-					<div class="completed_container">
-						<input
-							type="checkbox"
-							class="completed"
-						/>
-						<label for="checkbox"></label>
-					</div>
-					<div class="content">
-						<div class="title">Lorem ipsadipisicing elit.</div>
-						<div class="description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam fuga provident</div>
-						<div class="meta">
-							<div class="date">
-								<i class="fa-regular fa-calendar"></i>
-								<span>6 avril</span>
-							</div>
-							<div class="autor">
-								<i class="fa-regular fa-user"></i>
-								<span>Franz lvq</span>
-							</div>
+						<div class="edit">
+							<i class="fa-regular fa-pen-to-square"></i>
 						</div>
-					</div>
-					<div class="crud">
-						<div class="edit"><i class="fa-regular fa-pen-to-square"></i></div>
-						<div class="move"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+						<div class="move">
+							<i class="fa-solid fa-arrow-right-arrow-left"></i>
+						</div>
 						<div class="delete"><i class="fa-regular fa-trash-can"></i></div>
 					</div>
 				</div> -->
 			</div>
 		</div>
-		<div class="add_modal none">
+		<div
+			id="modal"
+			class="none"
+		>
 			<form
 				action=""
 				id="contact_form"
@@ -103,14 +85,18 @@
 				<div class="task_container">
 					<div class="title">
 						<input
+							id="titleModal"
 							type="text"
 							name="title"
+							value=""
 							placeholder="Task name here ..."
 						/>
 					</div>
 					<div class="description">
 						<input
+							id="descModal"
 							type="text"
+							value=""
 							name="desc"
 							placeholder="Description"
 						/>
@@ -120,7 +106,9 @@
 					<div class="info">
 						<button class="date">
 							<input
+								id="dateModal"
 								type="date"
+								value=""
 								name="due_date"
 							/>
 							<i class="fa-regular fa-calendar"></i>
@@ -128,7 +116,9 @@
 						</button>
 						<button class="autor">
 							<input
+								id="autorModal"
 								type="text"
+								value=""
 								name="assign_to"
 							/>
 							<i class="fa-regular fa-user"></i>
@@ -136,12 +126,12 @@
 						</button>
 					</div>
 					<div class="action">
-						<button class="cancel_btn">cancel</button>
+						<button class="btn_cancel">Cancel</button>
 						<button
-							class="add_btn"
+							class="btn_add"
 							type="submit"
 						>
-							add task
+							Add
 						</button>
 					</div>
 				</div>
