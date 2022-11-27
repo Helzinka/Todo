@@ -7,10 +7,26 @@ import {
 	getLocalStorage,
 } from "./storage.js"
 
+export const completed = () => {
+	for (const item of document.querySelectorAll(".completed")) {
+		item.addEventListener("click", function () {
+			let isChecked = this.checked
+			let key = this.parentNode.parentNode.parentNode.getAttribute("data-key")
+			if (isChecked) {
+				let { data } = getLocalStorage(key)
+				data.completed = isChecked
+				setLocalStorage(key, data, true)
+			}
+		})
+	}
+}
+
 export const getCountTodos = () => {
-	console.log("ok")
-	const { data } = getLengthLocalStorage()
-	document.querySelector("#count_todo").textContent = data
+	const { data } = getAllLocalStorage()
+	let completed = data.filter((e) => e.completed === true).length
+	let not_completed = data.filter((e) => e.completed === false).length
+	document.querySelector("#count_todo").textContent = not_completed
+	document.querySelector("#count_completed").textContent = completed
 }
 
 export const removeTodo = () => {
@@ -65,13 +81,15 @@ export const createTodo = (item) => {
 		getCountTodos()
 		removeTodo()
 		editModal()
+		completed()
 	}
 }
 
-export const getAllTodos = () => {
+export const getAllTodos = (isCompleted = false) => {
 	const { result, data } = getAllLocalStorage()
 	if (result) {
-		data.map((e) => {
+		document.querySelector("#content").innerHTML = ""
+		data.filter((item) => item.completed === isCompleted).map((e) => {
 			let templateTodo = `
 			<div class="card" data-key=${e.key}>
 			<div class="container">
@@ -110,6 +128,7 @@ export const getAllTodos = () => {
 		getCountTodos()
 		removeTodo()
 		editModal()
+		completed()
 	}
 }
 

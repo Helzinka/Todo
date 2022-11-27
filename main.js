@@ -12,6 +12,8 @@ const Cancel_btn = $(".btn_cancel") // cancel btn in modal
 const Contact_form = $("#contact_form") // event submit on form
 const Btn_update = $(".btn_update") // btn update modal
 const Btn_add = $(".btn_add") // btn add modal
+const Todo = $("#title")
+const Completed = $("#completed")
 
 // Get todo from db
 getAllTodos()
@@ -24,6 +26,18 @@ Add.addEventListener("click", () => {
 		Modal.className = ""
 		is_modal_open = true
 	}
+})
+
+Todo.addEventListener("click", function () {
+	this.classList.toggle("active")
+	Completed.classList.toggle("active")
+	getAllTodos(false)
+})
+
+Completed.addEventListener("click", function () {
+	this.classList.toggle("active")
+	Todo.classList.toggle("active")
+	getAllTodos(true)
 })
 
 // Hide task modal if #candel is performed
@@ -57,8 +71,6 @@ Contact_form.addEventListener("submit", (data) => {
 		const myFormData = new FormData(data.target)
 		let data_form = Object.fromEntries(myFormData.entries())
 		updateTodo(data_form)
-		clearModal()
-	} else if (data.submitter.className === "btn_cancel") {
 		clearModal()
 	}
 })

@@ -46,3 +46,7 @@
 	justify-content: center;
 	background-color: var(--main_bg_color);
 }
+
+.active {
+	color: var(--valid);
+}

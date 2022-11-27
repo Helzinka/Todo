@@ -14,6 +14,7 @@ export const submit = (data, key) => {
 				.toString()
 				.slice(2)}`
 			data.key = has_key
+			data.completed = false
 			data.assign_to =
 				data.assign_to.charAt(0).toUpperCase() + data.assign_to.slice(1)
 			return { result: true, data: data }
