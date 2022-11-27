@@ -38,36 +38,35 @@
 			</div>
 			<div id="content">
 				<!-- <div class="card">
-					<div class="completed_container">
-						<input
-							type="checkbox"
-							class="completed"
-						/>
-						<label for="checkbox"></label>
-					</div>
-					<div class="content">
-						<div class="title">Lorem</div>
-						<div class="description">
-							Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-							Ullam fuga provident
+					<div class="container">
+						<div class="check">
+							<input
+								type="checkbox"
+								class="completed"
+							/>
+							<label for="checkbox"></label>
 						</div>
-						<div class="meta">
-							<div class="date">
-								<i class="fa-regular fa-calendar"></i>
-								<span>6 avril</span>
+						<div class="content">
+							<div class="title">Lorem</div>
+							<div class="description">
+								Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+								Ullam fuga provident
 							</div>
-							<div class="autor">
-								<i class="fa-regular fa-user"></i>
-								<span>Franz lvq</span>
+							<div class="meta">
+								<div class="date">
+									<i class="fa-regular fa-calendar"></i>
+									<span>6 avril</span>
+								</div>
+								<div class="autor">
+									<i class="fa-regular fa-user"></i>
+									<span>Franz lvq</span>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="crud">
 						<div class="edit">
 							<i class="fa-regular fa-pen-to-square"></i>
-						</div>
-						<div class="move">
-							<i class="fa-solid fa-arrow-right-arrow-left"></i>
 						</div>
 						<div class="delete"><i class="fa-regular fa-trash-can"></i></div>
 					</div>
@@ -104,26 +103,19 @@
 				</div>
 				<div class="action_container">
 					<div class="info">
-						<button class="date">
-							<input
-								id="dateModal"
-								type="date"
-								value=""
-								name="due_date"
-							/>
-							<i class="fa-regular fa-calendar"></i>
-							<span>Due date</span>
-						</button>
-						<button class="autor">
-							<input
-								id="autorModal"
-								type="text"
-								value=""
-								name="assign_to"
-							/>
-							<i class="fa-regular fa-user"></i>
-							<span>Assign to</span>
-						</button>
+						<input
+							id="dateModal"
+							type="date"
+							value=""
+							name="due_date"
+						/>
+						<input
+							id="autorModal"
+							type="text"
+							value=""
+							placeholder="Assign to"
+							name="assign_to"
+						/>
 					</div>
 					<div class="action">
 						<button class="btn_cancel">Cancel</button>

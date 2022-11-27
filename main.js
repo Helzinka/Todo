@@ -10,14 +10,18 @@ const Add = $(".add") // btn_add header
 const Modal = $("#modal") // modal below main app
 const Cancel_btn = $(".btn_cancel") // cancel btn in modal
 const Contact_form = $("#contact_form") // event submit on form
+const Btn_update = $(".btn_update") // btn update modal
+const Btn_add = $(".btn_add") // btn add modal
 
 // Get todo from db
 getAllTodos()
 
-//get the date of today
-// let date = new Date()
+//get the date of today and assign to modal
+let date = new Date()
+date = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
+document.querySelector("#dateModal").value = date
 
-// Display a task modal from add button
+// boolean display mdoal
 let is_modal_open = false
 
 Add.addEventListener("click", () => {
@@ -29,27 +33,27 @@ Add.addEventListener("click", () => {
 
 // Hide task modal if #candel is performed
 Cancel_btn.addEventListener("click", () => {
-	Modal.className = "none"
+	Modal.className = " none"
+	is_modal_open = false
+})
+
+// Hide task modal if btn_update is performed
+Btn_update?.addEventListener("click", () => {
+	Modal.className = " none"
+	is_modal_open = false
+})
+
+// Hide task modal if btn_update is performed
+Btn_add?.addEventListener("click", () => {
+	Modal.className += " none"
 	is_modal_open = false
 })
 
 // Get data from #contact_form on submit event
-
-// data = {
-// 	assign_to: "name",
-// 	desc: "desc",
-// 	due_date: "2022-11-19",
-// 	task: "title",
-// }
 Contact_form.addEventListener("submit", (data) => {
 	// Prevent reload
 	data.preventDefault()
-
-	// Hide modal
 	if (data.submitter.className === "btn_add") {
-		Modal.className += " none"
-		is_modal_open = false
-
 		// Get data in FormData and return a object
 		const myFormData = new FormData(data.target)
 		let data_form = Object.fromEntries(myFormData.entries())

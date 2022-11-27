@@ -10,7 +10,7 @@ import {
 export const removeTodo = () => {
 	for (const item of document.querySelectorAll(".delete")) {
 		item.addEventListener("click", function () {
-			let key = this.parentNode.parentNode.querySelector(".title").textContent
+			let key = this.parentNode.parentNode.getAttribute("data-key")
 			removeLocalStorage(key)
 			this.parentNode.parentNode.remove()
 		})
@@ -19,8 +19,8 @@ export const removeTodo = () => {
 }
 
 export const getCountTodos = () => {
-	document.querySelector("#count_todo").textContent =
-		getLengthLocalStorage().data || "0"
+	const { data } = getLengthLocalStorage()
+	document.querySelector("#count_todo").textContent = data
 }
 
 export const createTodo = (item) => {
@@ -28,34 +28,37 @@ export const createTodo = (item) => {
 	if (result) {
 		setLocalStorage(data.key, data, false)
 		let templateTodo = `
-            <div class="card" data-key=${data.key}>
-                <div class="completed_container">
-                    <input
-                        type="checkbox"
-                        class="completed"
-                    />
-                    <label for="checkbox"></label>
-                </div>
-                <div class="content">
-                    <div class="title">${data.title}</div>
-                    <div class="description">${data.desc}</div>
-                    <div class="meta">
-                        <div class="date">
-                            <i class="fa-regular fa-calendar"></i>
-                            <span>${data.due_date}</span>
-                        </div>
-                        <div class="autor">
-                            <i class="fa-regular fa-user"></i>
-                            <span>${data.assign_to}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="crud">
-                    <div class="edit"><i class="fa-regular fa-pen-to-square"></i></div>
-                    <div class="move"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
-                    <div class="delete"><i class="fa-regular fa-trash-can"></i></div>
-                </div>
-            </div>
+		<div class="card" data-key=${data.key}>
+		<div class="container">
+			<div class="check">
+				<input
+					type="checkbox"
+					class="completed"
+				/>
+				<label for="checkbox"></label>
+			</div>
+			<div class="content">
+				<div class="title">${data.title}</div>
+				<div class="description">${data.desc}</div>
+				<div class="meta">
+					<div class="date">
+						<i class="fa-regular fa-calendar"></i>
+						<span class="due_date">${data.due_date}</span>
+					</div>
+					<div class="autor">
+						<i class="fa-regular fa-user"></i>
+						<span class="assign_to">${data.assign_to}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="crud">
+			<div class="edit">
+				<i class="fa-regular fa-pen-to-square"></i>
+			</div>
+			<div class="delete"><i class="fa-regular fa-trash-can"></i></div>
+		</div>
+	</div>
     `
 		document.querySelector("#content").innerHTML += templateTodo
 		getCountTodos()
@@ -69,41 +72,44 @@ export const getAllTodos = () => {
 	if (result) {
 		data.map((e) => {
 			let templateTodo = `
-                    <div class="card" data-key=${e.key}>
-                        <div class="completed_container">
-                            <input
-                                type="checkbox"
-                                class="completed"
-                            />
-                            <label for="checkbox"></label>
-                        </div>
-                        <div class="content">
-                            <div class="title">${e.title}</div>
-                            <div class="description">${e.desc}</div>
-                            <div class="meta">
-                                <div class="date">
-                                    <i class="fa-regular fa-calendar"></i>
-                                    <span>${e.due_date}</span>
-                                </div>
-                                <div class="autor">
-                                    <i class="fa-regular fa-user"></i>
-                                    <span>${e.assign_to}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="crud">
-                            <div class="edit"><i class="fa-regular fa-pen-to-square"></i></div>
-                            <div class="move"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
-                            <div class="delete"><i class="fa-regular fa-trash-can"></i></div>
-                        </div>
-                    </div>
+			<div class="card" data-key=${e.key}>
+			<div class="container">
+				<div class="check">
+					<input
+						type="checkbox"
+						class="completed"
+					/>
+					<label for="checkbox"></label>
+				</div>
+				<div class="content">
+					<div class="title">${e.title}</div>
+					<div class="description">${e.desc}</div>
+					<div class="meta">
+						<div class="date">
+							<i class="fa-regular fa-calendar"></i>
+							<span class="due_date">${e.due_date}</span>
+						</div>
+						<div class="autor">
+							<i class="fa-regular fa-user"></i>
+							<span class="assign_to">${e.assign_to}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="crud">
+				<div class="edit">
+					<i class="fa-regular fa-pen-to-square"></i>
+				</div>
+				<div class="delete"><i class="fa-regular fa-trash-can"></i></div>
+			</div>
+		</div>
                     `
 			document.querySelector("#content").innerHTML += templateTodo
 		})
+		getCountTodos()
+		removeTodo()
+		editModal()
 	}
-	getCountTodos()
-	removeTodo()
-	editModal()
 }
 
 export const editModal = () => {
@@ -128,8 +134,17 @@ export const editModal = () => {
 export const updateTodo = (item) => {
 	let key = document.querySelector("#modal").getAttribute("data-key")
 	let { result, data } = submit(item, key)
-	console.log(data)
-	setLocalStorage(data.key, item, true)
+	if (result) {
+		setLocalStorage(data.key, item, true)
+		for (const item of document.querySelectorAll(".card")) {
+			if (item.getAttribute("data-key") === key) {
+				item.querySelector(".title").textContent = data.title
+				item.querySelector(".description").textContent = data.desc
+				item.querySelector(".due_date").textContent = data.due_date
+				item.querySelector(".assign_to").textContent = data.assign_to
+			}
+		}
+	}
 }
 
 export const clearModal = () => {

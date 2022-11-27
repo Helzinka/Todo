@@ -1,0 +1,48 @@
+#header {
+	position: relative;
+	height: 4%;
+	display: flex;
+	padding: 20px;
+	border-bottom: 1px solid var(--border_button_color);
+}
+
+#header .todo {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+#header .completed {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+#header .add {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	right: 20px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 26px;
+	height: 26px;
+	border-radius: 50%;
+	color: var(--valid);
+	border: 1px solid var(--valid);
+}
+
+#header .todo {
+	margin-right: 16px;
+}
+
+#header .container {
+	width: 26px;
+	height: 20px;
+	border-radius: 16px;
+	margin-left: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--main_bg_color);
+}

@@ -2,23 +2,35 @@
 	position: relative;
 	display: flex;
 	flex-direction: row;
-	align-items: flex-start;
+	justify-content: space-between;
 	padding: 16px;
 	border-bottom: 1px solid var(--border_button_color);
+}
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 16px;
 }
 
 .card:hover .fa-pen-to-square {
 	color: var(--valid);
+	transition: 0.5s;
 }
 .card:hover .fa-arrow-right-arrow-left {
 	color: var(--valid);
+	transition: 0.5s;
 }
 .card:hover .fa-trash-can {
 	color: var(--important);
+	transition: 0.5s;
 }
 
 .content {
 	margin-top: -4px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 }
 
 .content .title {
@@ -27,7 +39,6 @@
 
 .content .description {
 	font-size: 12px;
-	margin: 8px 0px 8px 0px;
 }
 
 .content .meta {
@@ -54,12 +65,12 @@
 }
 
 .crud {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	min-width: 30px;
 	color: transparent;
 	font-size: 16px;
 	cursor: pointer;
-	display: flex;
-	flex-direction: column;
 	gap: 8px;
-	transition: 0.2s;
 }

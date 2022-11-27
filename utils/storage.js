@@ -31,7 +31,7 @@ export const clearLocalStorage = () => {
 export const getLengthLocalStorage = () => {
 	return localStorage.length > 0
 		? { result: true, data: localStorage.length }
-		: { result: false, error: "no data" }
+		: { result: false, error: "no data", data: 0 }
 }
 
 export const getAllLocalStorage = () => {
