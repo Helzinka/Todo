@@ -22,11 +22,16 @@ export const completed = () => {
 }
 
 export const getCountTodos = () => {
-	const { data } = getAllLocalStorage()
-	let completed = data.filter((e) => e.completed === true).length
-	let not_completed = data.filter((e) => e.completed === false).length
-	document.querySelector("#count_todo").textContent = not_completed
-	document.querySelector("#count_completed").textContent = completed
+	const { result, data } = getAllLocalStorage()
+	if (result) {
+		let completed = data.filter((e) => e.completed === true).length
+		let not_completed = data.filter((e) => e.completed === false).length
+		document.querySelector("#count_todo").textContent = not_completed
+		document.querySelector("#count_completed").textContent = completed
+	} else {
+		document.querySelector("#count_todo").textContent = 0
+		document.querySelector("#count_completed").textContent = 0
+	}
 }
 
 export const removeTodo = () => {
