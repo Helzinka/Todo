@@ -61,7 +61,7 @@ h3 {
 #container {
 	position: relative;
 	height: 80%;
-	width: 60%;
+	width: 40%;
 	border-radius: 16px;
 	display: flex;
 	flex-direction: column;

@@ -9,7 +9,6 @@
 .container {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
 	gap: 16px;
 }
 
@@ -29,6 +28,7 @@
 .content {
 	margin-top: -4px;
 	display: flex;
+	max-width: 80%;
 	flex-direction: column;
 	gap: 8px;
 }
@@ -46,7 +46,16 @@
 	flex-direction: row;
 	font-size: 14px;
 	gap: 8px;
+}
+
+.content .meta span {
 	color: var(--important);
+}
+.content .meta svg {
+	color: var(--police_description_color);
+}
+.content .meta .autor span {
+	color: var(--valid);
 }
 
 .content .meta svg {
@@ -58,6 +67,10 @@
 	flex-direction: row;
 	align-items: center;
 	gap: 4px;
+}
+.content .meta {
+	display: flex;
+	gap: 10px;
 }
 
 .content .meta span {
