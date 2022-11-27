@@ -16,11 +16,6 @@ const Btn_add = $(".btn_add") // btn add modal
 // Get todo from db
 getAllTodos()
 
-//get the date of today and assign to modal
-let date = new Date()
-date = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
-document.querySelector("#dateModal").value = date
-
 // boolean display mdoal
 let is_modal_open = false
 

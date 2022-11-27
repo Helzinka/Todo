@@ -7,24 +7,25 @@ import {
 	getLocalStorage,
 } from "./storage.js"
 
+export const getCountTodos = () => {
+	console.log("ok")
+	const { data } = getLengthLocalStorage()
+	document.querySelector("#count_todo").textContent = data
+}
+
 export const removeTodo = () => {
 	for (const item of document.querySelectorAll(".delete")) {
 		item.addEventListener("click", function () {
 			let key = this.parentNode.parentNode.getAttribute("data-key")
 			removeLocalStorage(key)
 			this.parentNode.parentNode.remove()
+			getCountTodos()
 		})
 	}
-	getCountTodos()
-}
-
-export const getCountTodos = () => {
-	const { data } = getLengthLocalStorage()
-	document.querySelector("#count_todo").textContent = data
 }
 
 export const createTodo = (item) => {
-	let { result, data } = submit(item)
+	let { result, data, error } = submit(item)
 	if (result) {
 		setLocalStorage(data.key, data, false)
 		let templateTodo = `
